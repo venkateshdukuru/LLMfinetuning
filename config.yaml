@@ -1,1 +1,35 @@
-To generate a YAML file for your GitHub Actions workflow, please provide me with your specific requirements after the colon.
+```yaml
+name: devops-automation
+
+on:
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: yarn install
+
+    - name: Build project
+      run: ./build-dev.sh
+
+    - name: Deploy to development
+      run: |
+        # Add your deployment steps here
+
+    - name: Notify Microsoft Teams
+      run: |
+        # Add your notification to Microsoft Teams here
+```
